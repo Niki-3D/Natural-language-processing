@@ -1,5 +1,6 @@
 import re
 from collections import defaultdict
+from Levenshtein_Method import Levenshtein_Distance
 
 class NameAnalyzis:
     def __init__(self, list_of_names):
