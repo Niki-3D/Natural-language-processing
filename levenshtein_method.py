@@ -68,7 +68,7 @@ class Levenshtein_Method:
 
 levenshtein_method = Levenshtein_Method()
 word = "Horse"
-words = ["", "rse","arata", "jojoj", "se"]
+words = ["", "Hre","arata", "jojoj", "se"]
 most_similar_word = levenshtein_method.most_similar_word(word, words)
 print(f"The most similar word to '{word}' is '{most_similar_word}'")
 
@@ -86,6 +86,8 @@ print(f"Are '{word1}' and '{word2}' similar? {is_similar1}")
 
 is_similar2 = levenshtein_method.is_similar(word1, word3, threshold)
 print(f"Are '{word1}' and '{word3}' similar? {is_similar2}")
+
+
 
 
 
