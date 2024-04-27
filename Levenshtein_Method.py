@@ -34,6 +34,7 @@ class Levenshtein_Method:
 
         return similarity
 
+
     # This method is used to find the most similar word in a list of words to a given word
     def most_similar_word(self, word, words):
         # Initialize the most similar word and its similarity score
@@ -71,15 +72,20 @@ words = ["", "rse","arata", "jojoj", "se"]
 most_similar_word = levenshtein_method.most_similar_word(word, words)
 print(f"The most similar word to '{word}' is '{most_similar_word}'")
 
+
+#After tests is_similar marks the word as is_similar only if 2 letters are different from the original word
 word1 = "Brozyniak"
 word2 = "Brozniak"
-word3 = "Borozyniakowski"
+word3 = "Borozyniakos"
 threshold = 0.8
-is_similar = levenshtein_method.is_similar(word1, word2, threshold)
-print(f"Are '{word1}' and '{word2}' similar? {is_similar}")
-print(f"Are '{word1}' and '{word3}' similar? {is_similar}")
 
-# Output:
-# The most similar word to 'Horse' is 'rse'
-# Are 'Brozyniak' and 'Brozniak' similar? True
-# Are 'Brozyniak' and 'Borozyniakowski' similar? True
+
+is_similar1 = levenshtein_method.is_similar(word1, word2, threshold)
+print(f"Are '{word1}' and '{word2}' similar? {is_similar1}")
+
+
+is_similar2 = levenshtein_method.is_similar(word1, word3, threshold)
+print(f"Are '{word1}' and '{word3}' similar? {is_similar2}")
+
+
+
