@@ -25,7 +25,7 @@ class NameAnalyzis:
 
 # Example usage:
 list_of_names = ["Joe Doe", "joedoe", "-Joe Doe", "joe doe", "joo doee", "   joe DOE  ", "Joe Doe", "joe doe", "Joee Do"]
-name_processor = NameProcessor(list_of_names)
+name_processor = NameAnalyzis(list_of_names)
 name_counts = name_processor.get_name_counts()
 
 for name, count in name_counts.items():
