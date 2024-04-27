@@ -23,8 +23,13 @@ class NameAnalyzis:
     def get_name_counts(self):
         return dict(self.name_counts)
 
-# Example usage:
-list_of_names = ["Joe Doe", "joedoe", "-Joe Doe", "joe doe", "joo doee", "   joe DOE  ", "Joe Doe", "joe doe", "Joee Do"]
+
+list_of_names = [
+    "Joe Doe", "joedoe", "-Joe Doe", "joe doe", "joo doee", "   joe DOE  ", "Joe Doe", "joe doe", "Joee Do",
+    "John Smith", "Jon Smiith", "jooon Smth", "John Smtih", "Jonh Smit", "Jhon Smith", "john smit", "   John Smeth", "John Smith", "Johh Smth", "jon smtth", "johnsmith",
+    "Emily Johnson", "Emili Johnsoon", "Emile Jonsn", "Emily Johanson", "Emilly Jhonsen", "Emlie Johson", "  emily jhonson  ", "emily jhonsn", "Emily Johnson", "Emly Johsson", "emily Johnsonn", "Emiley Johnsson"
+]
+
 name_processor = NameAnalyzis(list_of_names)
 name_counts = name_processor.get_name_counts()
 
