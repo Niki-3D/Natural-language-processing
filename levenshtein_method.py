@@ -26,6 +26,8 @@ class Levenshtein_Method:
 
     # This method is used to calculate the similarity between two strings
     def similarity(self, string1, string2):
+        string1 = string1.lower()
+        string2 = string2.lower()
         # Calculate the Levenshtein distance between the two strings
         distance = self.levenshtein_distance(string1, string2)
 
@@ -67,16 +69,10 @@ class Levenshtein_Method:
 
 
 levenshtein_method = Levenshtein_Method()
-word = "Horse"
-words = ["", "Hre","arata", "jojoj", "se"]
-most_similar_word = levenshtein_method.most_similar_word(word, words)
-print(f"The most similar word to '{word}' is '{most_similar_word}'")
 
-
-#After tests is_similar marks the word as is_similar only if 2 letters are different from the original word
-word1 = "Brozyniak"
-word2 = "Brozniak"
-word3 = "Borozyniakos"
+word1 = "Joe Doe"
+word2 = "joedoe"
+word3 = "Joo Dee"
 threshold = 0.8
 
 
@@ -86,6 +82,9 @@ print(f"Are '{word1}' and '{word2}' similar? {is_similar1}")
 
 is_similar2 = levenshtein_method.is_similar(word1, word3, threshold)
 print(f"Are '{word1}' and '{word3}' similar? {is_similar2}")
+
+
+
 
 
 
