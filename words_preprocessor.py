@@ -5,6 +5,7 @@ class Words_Preprocessor:
     def __init__(self, dict_of_names):
         self.dict_of_names = dict_of_names
         self.cleaned_names = self.clean_names()
+        self.names_without_prepositions = self.remove_prepositions()
         self.processed_names = self.process_names()
         self.name_counts = self.count_names_greater_than_one()
 
@@ -15,11 +16,22 @@ class Words_Preprocessor:
             cleaned_name = re.sub(r'\s+', ' ', cleaned_name)
             cleaned_name = cleaned_name.strip()
             cleaned_names.append(cleaned_name)
+
+
         return cleaned_names
+
+    def remove_prepositions(self):
+        prepositions = ['for', 'dla']
+        modified_names = []
+        for name in self.cleaned_names:
+            for preposition in prepositions:
+                name = name.replace(preposition, '').strip()
+            modified_names.append(name)
+        return modified_names
 
     def process_names(self):
         processed_names = []
-        for name in self.cleaned_names:
+        for name in self.names_without_prepositions:
             processed_name = name.lower()
             processed_names.append(processed_name)
         return processed_names
@@ -38,7 +50,7 @@ class Words_Preprocessor:
 
 
 dict_of_names = {
-    'Joe Doe': 5, 'joedoe': 4, '-Joe Doe': 2, 'joe doe': 3, 'joo doee': 9, 'joe DOE': 10, 'Joee Do': 5,
+    'dla Joe Doe': 5, 'joedoe': 4, '-Joe Doe': 2, 'joe doe': 3, 'joo doee': 9, 'joe DOE': 10, 'Joee Do': 5,
     'John Smith': 5, 'Jon Smiith': 8, 'jooon Smth': 3, 'John Smtih': 2, 'Jonh Smit': 4, 'Jhon Smith': 9,
     'john smit': 7, 'John Smeth': 7, 'Johh Smth': 1, 'jon smtth': 1, 'johnsmith': 1, 'Emily Johnson': 6,
     'Emili Johnsoon': 4, 'Emile Jonsn': 8, 'Emily Johanson': 8, 'Emilly Jhonsen': 10, 'Emlie Johson': 5,
@@ -50,4 +62,3 @@ name_counts = name_processor.count_names_greater_than_one()
 
 print(name_counts)
 print(name_processor.get_processed_names())
-
