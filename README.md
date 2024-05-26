@@ -7,7 +7,7 @@ A tool to analyze donation data with potential typos and similar entries.
 This project helps in analyzing donation data where entries might have typos or variations in names. It clusters similar entries together and sums the donations for each cluster.
 
 ## Project Structure
-
+```
 project-root/
 ├── src/
 │ ├── logic/
@@ -30,6 +30,7 @@ project-root/
 ├── requirements.txt
 ├── README.md
 └── setup.py
+```
 
 ## Installation
 
