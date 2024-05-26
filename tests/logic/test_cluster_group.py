@@ -14,11 +14,11 @@ class TestClusterGroup(unittest.TestCase):
         for cluster_label, cluster_names in clusters.items():
             print(f"Cluster {cluster_label}: {cluster_names}")
         
-        # Check if similar names are clustered together
-        self.assertTrue(any('Jan Kowalski' in cluster and 'Jan Kowal' in cluster for cluster in clusters.values()))
-        self.assertTrue(any('Anna Nowak' in cluster and 'Ania Nowak' in cluster for cluster in clusters.values()))
-        self.assertTrue(any('Adam Nowak' in cluster and 'Adem Nowak' in cluster for cluster in clusters.values()))
-        self.assertTrue(any('Jan Kowalski' in cluster and 'Kowalski Jan' in cluster for cluster in clusters.values()))
+        self.assertEqual(len(clusters), 4)
+        self.assertIn(['Jan Kowalski', 'Jan Kowal', 'Kowalski Jan'], clusters.values())
+        self.assertIn(['Anna Nowak', 'Ania Nowak'], clusters.values())
+        self.assertIn(['Janina Kowalska'], clusters.values())
+        self.assertIn(['Adam Nowak', 'Adem Nowak'], clusters.values())
 
 if __name__ == '__main__':
     unittest.main()

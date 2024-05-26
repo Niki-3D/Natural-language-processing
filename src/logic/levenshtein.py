@@ -1,3 +1,5 @@
+from src.utils.clustering_tools import split_name
+
 class Levenshtein:
     @staticmethod
     def calculate_distance(string1, string2):
@@ -30,16 +32,27 @@ class Levenshtein:
         return previous_row[-1]
 
     @staticmethod
-    def are_similar(string1, string2, threshold=2):
+    def are_similar(string1, string2, surname_threshold=3, name_threshold=2):
         """
-        Determine if two strings are similar within a given Levenshtein distance threshold.
+        Determine if two names are similar or reversed versions of each other within given Levenshtein distance thresholds.
         
         Args:
-            string1 (str): The first string.
-            string2 (str): The second string.
-            threshold (int, optional): The Levenshtein distance threshold for similarity. Defaults to 2.
+            string1 (str): The first name.
+            string2 (str): The second name.
+            surname_threshold (int, optional): The Levenshtein distance threshold for surname similarity. Defaults to 3.
+            name_threshold (int, optional): The Levenshtein distance threshold for name similarity. Defaults to 2.
         
         Returns:
-            bool: True if the strings are similar, False otherwise.
+            bool: True if the names are similar or reversed, False otherwise.
         """
-        return Levenshtein.calculate_distance(string1, string2) <= threshold
+        first1, last1 = split_name(string1)
+        first2, last2 = split_name(string2)
+
+        if Levenshtein.calculate_distance(last1, last2) <= surname_threshold:
+            if Levenshtein.calculate_distance(first1, first2) <= name_threshold:
+                return True
+        elif Levenshtein.calculate_distance(last1, first2) <= 1:
+            if Levenshtein.calculate_distance(first1, last2) <= 1:
+                return True
+
+        return False
