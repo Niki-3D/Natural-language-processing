@@ -1,0 +1,6 @@
+pandas
+numpy
+scipy
+fuzzywuzzy
+python-Levenshtein
+pytest
