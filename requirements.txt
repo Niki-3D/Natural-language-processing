@@ -4,3 +4,4 @@ scipy
 fuzzywuzzy
 python-Levenshtein
 pytest
+scikit-learn

@@ -46,6 +46,7 @@ class DataPreprocessor:
 
 if __name__ == "__main__":
     preprocessor = DataPreprocessor()
-    data = preprocessor.read_csv('data/input.csv')
+    data = preprocessor.read_csv('src/data/input.csv')
     cleaned_data = preprocessor.clean_data(data)
-    print(cleaned_data)
+    data_dict = preprocessor.to_dict(cleaned_data)
+    print(data_dict)

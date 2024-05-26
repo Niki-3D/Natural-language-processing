@@ -7,7 +7,7 @@ class TestDataPreprocessor(unittest.TestCase):
         self.preprocessor = DataPreprocessor()
 
     def test_read_csv(self):
-        data = self.preprocessor.read_csv('data/input.csv')
+        data = self.preprocessor.read_csv('tests/data/input.csv')
         self.assertIsInstance(data, list)
         self.assertGreater(len(data), 0)
 
