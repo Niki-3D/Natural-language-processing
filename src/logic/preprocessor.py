@@ -42,6 +42,9 @@ class DataPreprocessor:
                 data_dict[name] += amount
             else:
                 data_dict[name] = amount
+
+        # Round the values to two decimal places
+        data_dict = {k: round(v, 2) for k, v in data_dict.items()}
         return data_dict
 
 if __name__ == "__main__":
