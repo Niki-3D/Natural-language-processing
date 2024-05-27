@@ -13,3 +13,4 @@ tests/logic/__pycache__/__init__.cpython-311.pyc
 tests/logic/__pycache__/test_cluster_group.cpython-311.pyc
 tests/logic/__pycache__/test_levenshtein.cpython-311.pyc
 tests/logic/__pycache__/test_preprocessor.cpython-311.pyc
+/.venv
