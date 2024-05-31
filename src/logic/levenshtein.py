@@ -70,3 +70,6 @@ def fuzzy_group(data_dict):
 
 def sortuj_alfabetycznie(data_dict):
     pass
+
+def pierwsze_alfabetyczne_po_imionach_a_drugie_po_nazwiskach(data_dict):
+    pass
