@@ -56,3 +56,17 @@ class Levenshtein:
                 return True
 
         return False
+#ALFABETYCZNIE SORTUJEMY
+
+def alphabetically_sort(data_dict):
+    pass
+
+def usun_ostatnia_litere_przy_dla(data_dict):
+    pass
+
+def fuzzy_group(data_dict):
+    pass
+
+
+def sortuj_alfabetycznie(data_dict):
+    pass
