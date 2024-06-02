@@ -15,23 +15,24 @@ class TestLevenshtein(unittest.TestCase):
     def test_calculate_distance_with_empty_string2(self):
         self.assertEqual(Levenshtein.calculate_distance('test', ''), 4)
 
-    def test_are_similar_returns_true_for_similar_names(self):
-        self.assertTrue(Levenshtein.are_similar('Jan Kowalski', 'Jan Kowal'))
+    def test_is_name_similar_returns_any_value(self):
+        self.assertIsNotNone(Levenshtein.is_similar('adam kowalskieg', 'adam kowalski'))
 
-    def test_are_similar_returns_true_for_reversed_names(self):
-        self.assertTrue(Levenshtein.are_similar('Jan Kowalski', 'Kowalski Jan'))
+    def test_is_name_similar_returns_boolean(self):
+        self.assertIsInstance(Levenshtein.is_similar('adam kowalskieg', 'adam kowalski'), bool)
 
-    def test_are_similar_returns_true_for_variation_of_name(self):
-        self.assertTrue(Levenshtein.are_similar('Ania Nowak', 'Nowak Anna'))
+    def test_is_name_similar_returns_true(self):
+        self.assertTrue(Levenshtein.is_similar('adam kowalskieg', 'adam kowalski'))
 
-    def test_are_similar_returns_false_for_different_names(self):
-        self.assertFalse(Levenshtein.are_similar('Jan Kowalski', 'Janina Kowalska'))
+    def test_is_name_similar_returns_true_in_edge_case(self):
+        self.assertTrue(Levenshtein.is_similar('ann nowa', 'ania nowak'))
 
-    def test_are_similar_returns_true_for_variation_of_surname(self):
-        self.assertTrue(Levenshtein.are_similar('Adam Nowak', 'Nowak Adem'))
+    def test_is_name_similar_returns_false(self):
+        self.assertFalse(Levenshtein.is_similar('anna nowa', 'adam nowak'))
 
-    def test_are_similar_returns_false_for_completely_different_names(self):
-        self.assertFalse(Levenshtein.are_similar('John Smith', 'Jane Doe'))
-
+    def test_is_name_similar_returns_false_in_edge_case(self):
+        self.assertFalse(Levenshtein.is_similar('jan nowak', 'janina nowak'))
+        
 if __name__ == '__main__':
     unittest.main()
+

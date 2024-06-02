@@ -22,11 +22,15 @@ class DataPreprocessor:
         return string.strip()
 
     def remove_prepositions(self, string):
-        # Normalize the string first
         string = self.normalize_string(string)
         words = string.split()
+        original_words = words.copy()  
         filtered_words = [word for word in words if word not in self.prepositions]
+        if any(word in self.prepositions for word in original_words):
+            filtered_words = [word[:-1] for word in filtered_words]
         return ' '.join(filtered_words)
+
+    
 
     def clean_data(self, raw_data):
         cleaned_data = []
@@ -46,10 +50,34 @@ class DataPreprocessor:
         # Round the values to two decimal places
         data_dict = {k: round(v, 2) for k, v in data_dict.items()}
         return data_dict
+    
+    def alphabetically_sort_and_sum_up_strings(self, data_dict):
+        sorted_dict = {}
+        for key in data_dict.keys():
+            names = key.split()
+            names.sort()
+            sorted_key = ' '.join(names)
+            if sorted_key in sorted_dict:
+                sorted_dict[sorted_key] += data_dict[key]
+            else:
+                sorted_dict[sorted_key] = data_dict[key]
+        
+        return sorted_dict
+    
+    def alphabetically_sort_dicts(self, data_dict):
+        return {key: data_dict[key] for key in sorted(data_dict.keys())}
+            
 
+    def process(self, file_path):
+        data = self.read_csv(file_path)
+        cleaned_data = self.clean_data(data)
+        data_dict = self.to_dict(cleaned_data)
+        sorted_values = self.alphabetically_sort_and_sum_up_strings(data_dict)
+        return self.alphabetically_sort_dicts(sorted_values)
+
+   
 if __name__ == "__main__":
     preprocessor = DataPreprocessor()
-    data = preprocessor.read_csv('src/data/input.csv')
-    cleaned_data = preprocessor.clean_data(data)
-    data_dict = preprocessor.to_dict(cleaned_data)
-    print(data_dict)
+    data = preprocessor.process('src/data/input.csv')
+    print(data)
+
