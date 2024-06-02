@@ -76,8 +76,5 @@ class DataPreprocessor:
         return self.alphabetically_sort_dicts(sorted_values)
 
    
-if __name__ == "__main__":
-    preprocessor = DataPreprocessor()
-    data = preprocessor.process('src/data/input.csv')
-    print(data)
+
 

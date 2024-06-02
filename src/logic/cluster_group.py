@@ -66,16 +66,8 @@ class ClusterGroup:
                     merged_dict[name] = value
         return merged_dict
 
-# Example usage
-name_value_dict = {
-    'adam nowak': 101, 'ann nowak': 100, 
-    'anna kowalska': 101, 'anna kowalski': 100, 'anna nowak': 101, 
-    'jan nowak': 101, 'janina kowalska': 101, 'janina nowak': 105
-}
-
-cluster_group = ClusterGroup(name_value_dict)
-cluster_group.create_clusters()
-cluster_group.merge_similar_names()
-merged_name_value_dict = cluster_group.get_merged_name_value_dict()
-
-print(merged_name_value_dict)
+    def cluster_names(self):
+        self.create_clusters()
+        self.merge_similar_names()
+        return self.get_merged_name_value_dict()
+    
