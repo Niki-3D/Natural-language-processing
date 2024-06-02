@@ -11,7 +11,7 @@ def main():
     result = cluster_group.clusters
     processor = Processor(result)
     processor.run_processor(result)
-    
+
 
 if __name__ == '__main__':
     main()
