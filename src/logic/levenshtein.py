@@ -35,7 +35,7 @@ class Levenshtein:
     
 
     @staticmethod
-    def is_similar(string1, string2, surname_threshold=2, name_threshold=2):
+    def is_similar(string1, string2, surname_threshold=3, name_threshold=2):
         """
         Determine if two names are similar based on Levenshtein distance thresholds.
 

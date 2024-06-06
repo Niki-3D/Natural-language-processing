@@ -26,8 +26,6 @@ class DataPreprocessor:
         words = string.split()
         original_words = words.copy()  
         filtered_words = [word for word in words if word not in self.prepositions]
-        if any(word in self.prepositions for word in original_words):
-            filtered_words = [word[:-1] for word in filtered_words]
         return ' '.join(filtered_words)
 
     
