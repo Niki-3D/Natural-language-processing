@@ -28,8 +28,6 @@ class DataPreprocessor:
         filtered_words = [word for word in words if word not in self.prepositions]
         return ' '.join(filtered_words)
 
-    
-
     def clean_data(self, raw_data):
         cleaned_data = []
         for name, amount in raw_data:
